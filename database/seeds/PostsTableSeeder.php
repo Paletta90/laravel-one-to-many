@@ -5,6 +5,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
 use Faker\Generator as Faker;
 use App\Models\Post;
+use App\Models\Category;
 
 class PostsTableSeeder extends Seeder
 {
@@ -15,10 +16,15 @@ class PostsTableSeeder extends Seeder
      */
     public function run(Faker $faker)
     {
+        $arrayCategories = Category::all();
+        dd($arrayCategories);
+
+        
         for($i = 0; $i < 10; $i++){
 
             $post = new Post();
             $post -> title = $faker -> text(10);
+            // $post -> category_id = 
             $post -> slug = Str::slug($post->title, '-');
             $post -> content = $faker -> paragraph();
             $post -> image = $faker -> imageUrl(250, 250);
