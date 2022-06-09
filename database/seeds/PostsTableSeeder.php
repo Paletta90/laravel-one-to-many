@@ -17,8 +17,6 @@ class PostsTableSeeder extends Seeder
     public function run(Faker $faker)
     {
         $arrayCategories = Category::all();
-        dd($arrayCategories);
-
         
         for($i = 0; $i < 10; $i++){
 

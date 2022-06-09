@@ -44,11 +44,7 @@
                 <td class="d-flex">
                     <a href="{{ route('admin.posts.show', $post->id) }}" class="btn btn-primary mr-2">View</a>
                     <a href="{{ route('admin.posts.edit', $post->id) }}" class="btn btn-success mr-2">Edit</a>
-                    <form action="{{ route('admin.posts.destroy', $post->id) }}" method="POST" class="delete-form">
-                        @method('DELETE')
-                        @csrf
-                        <button type="submit" class="btn btn-danger">Delete</button>
-                    </form>
+                    @include('includes.deletePost')
                 </td>
 
             </tr>
@@ -62,17 +58,5 @@
 @endsection
 
 @section('scripts')
-{{-- <script src="{{ asset('js/deleteForm.js') }}"></script> --}}
-<script>
-    const deleteForm = document.querySelectorAll('.delete-form')
-
-    deleteForm.forEach(form => {
-        form.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const confirmation = confirm('Sei sicuro di voler cancellare il post?');
-            if (confirmation) e.target.submit();
-        });
-    });
-
-</script>
+<script src="{{ asset('js/deleteForm.js') }}"></script>
 @endsection
