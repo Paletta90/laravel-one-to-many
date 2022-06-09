@@ -15,6 +15,7 @@
         <thead>
             <tr>
                 <th scope="col">Title</th>
+                <th scope="col">Category</th>
                 <th scope="col">Content</th>
                 <th scope="col">Image</th>
                 <th scope="col">Firm</th>
@@ -27,6 +28,14 @@
 
                 <td>
                     <p>{{ $post->title }}</p>
+                </td>
+
+                <td>
+                    @if ($post->Category)
+                    <span class="badge badge-{{$post->Category->color}}">{{$post->Category->name}}</span>
+                    @else
+                    ----
+                    @endif
                 </td>
 
                 <td>
